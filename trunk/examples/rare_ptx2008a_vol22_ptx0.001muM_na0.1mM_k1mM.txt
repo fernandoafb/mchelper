@@ -1,0 +1,203 @@
+P<=0 [ F ("ptxAllBounded"&!("kAllBounded")&!("naAllBounded")) ]:
+Result
+false
+
+P<=0.1 [ F<=1 "ptxAllBounded" ]:
+Result
+false
+
+P>=1 [ F "ptxAllBounded" ]:
+Result
+true
+
+P>=1 [ F "kAllBounded" ]:
+Result
+false
+
+P>=1 [ F "kOutAllBounded" ]:
+Result
+true
+
+P>=1 [ F "kInAllBounded" ]:
+Result
+true
+
+P>=1 [ F "naAllBounded" ]:
+Result
+false
+
+P>=1 [ F "naOutAllBounded" ]:
+Result
+false
+
+P>=1 [ F "naInAllBounded" ]:
+Result
+false
+
+R{"time"}=? [ F "ptxAllBounded" ]:
+Result
+1.8866769578635388E-5
+
+R{"time"}=? [ F "kAllBounded" ]:
+Result
+Infinity
+
+R{"time"}=? [ F "kOutAllBounded" ]:
+Result
+579.9301321853598
+
+R{"time"}=? [ F "kInAllBounded" ]:
+Result
+0.0
+
+R{"time"}=? [ F "naAllBounded" ]:
+Result
+Infinity
+
+R{"time"}=? [ F "naOutAllBounded" ]:
+Result
+Infinity
+
+R{"time"}=? [ F "naInAllBounded" ]:
+Result
+Infinity
+
+R{"time"}=? [ F !("ptxAllBounded") {"ptxAllBounded"}{max} ]:
+Result
+Infinity
+
+R{"time"}=? [ F !("ptxAllBounded") {"ptxAllBounded"}{min} ]:
+Result
+Infinity
+
+R{"time"}=? [ F !("kAllBounded") {"kAllBounded"}{max} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("kAllBounded") {"kAllBounded"}{min} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("kOutAllBounded") {"kOutAllBounded"}{max} ]:
+Result
+50.0
+
+R{"time"}=? [ F !("kOutAllBounded") {"kOutAllBounded"}{min} ]:
+Result
+50.0
+
+R{"time"}=? [ F !("kInAllBounded") {"kInAllBounded"}{max} ]:
+Result
+42.09683729414669
+
+R{"time"}=? [ F !("kInAllBounded") {"kInAllBounded"}{min} ]:
+Result
+31.25
+
+R{"time"}=? [ F !("naAllBounded") {"naAllBounded"}{max} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("naAllBounded") {"naAllBounded"}{min} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("naOutAllBounded") {"naOutAllBounded"}{max} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("naOutAllBounded") {"naOutAllBounded"}{min} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("naInAllBounded") {"naInAllBounded"}{max} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F !("naInAllBounded") {"naInAllBounded"}{min} ]:
+Result
+Error: Filter satisfies no states.
+
+P>=1 [ G ("ptxAllBounded"=>P>=1 [ F ptxOut>=PTXO ]) ]:
+Result
+false
+
+P>=1 [ G ("kAllBounded"=>P>=1 [ F kIn+kOut>=KI+KO ]) ]:
+Result
+true
+
+P>=1 [ G ("kOutAllBounded"=>P>=1 [ F kOut>=KO ]) ]:
+Result
+false
+
+P>=1 [ G ("kInAllBounded"=>P>=1 [ F kIn>=KI ]) ]:
+Result
+true
+
+P>=1 [ G ("naAllBounded"=>P>=1 [ F naOut+naIn>=NO+NI ]) ]:
+Result
+true
+
+P>=1 [ G ("naOutAllBounded"=>P>=1 [ F naOut>=NO ]) ]:
+Result
+true
+
+P>=1 [ G ("naInAllBounded"=>P>=1 [ F naIn>=NI ]) ]:
+Result
+true
+
+R{"time"}=? [ F ptxOut=PTXO {"ptxAllBounded"} ]:
+Result
+Error: Filter should be satisfied in exactly 1 state (but ""ptxAllBounded"" is true in 10 states).
+
+R{"time"}=? [ F kOut+kIn=KO+KI {"kAllBounded"} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F kOut=KO {"kOutAllBounded"} ]:
+Result
+Infinity
+
+R{"time"}=? [ F kIn=KI {"kInAllBounded"} ]:
+Result
+Error: Filter should be satisfied in exactly 1 state (but ""kInAllBounded"" is true in 4 states).
+
+R{"time"}=? [ F naOut+naIn=NO+NI {"naAllBounded"} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F naOut=NO {"naOutAllBounded"} ]:
+Result
+Error: Filter satisfies no states.
+
+R{"time"}=? [ F naIn=NI {"naInAllBounded"} ]:
+Result
+Error: Filter satisfies no states.
+
+P>=1 [ G ((ptxOut=PTXO=>(P>0 [ F "ptxAllBounded" ]))|("ptxAllBounded"=>(P>0 [ F ptxOut=PTXO ]))) ]:
+Result
+true
+
+P>=1 [ G ((kOut+kIn=KI+KO=>(P>0 [ F "kAllBounded" ]))|("kAllBounded"=>(P>0 [ F kOut+kIn=KI+KO ]))) ]:
+Result
+true
+
+P>=1 [ G ((kOut=KO=>(P>0 [ F "kOutAllBounded" ]))|("kOutAllBounded"=>(P>0 [ F kOut=KO ]))) ]:
+Result
+true
+
+P>=1 [ G ((kIn=KI=>(P>0 [ F "kInAllBounded" ]))|("kInAllBounded"=>(P>0 [ F kIn=KI ]))) ]:
+Result
+true
+
+P>=1 [ G ((naOut+naIn=NI+NO=>(P>0 [ F "naAllBounded" ]))|("naAllBounded"=>(P>0 [ F naOut+naIn=NI+NO ]))) ]:
+Result
+true
+
+P>=1 [ G ((naOut=NO=>(P>0 [ F "naOutAllBounded" ]))|("naOutAllBounded"=>(P>0 [ F naOut=NO ]))) ]:
+Result
+true
+
+P>=1 [ G ((naIn=NI=>(P>0 [ F "naInAllBounded" ]))|("naInAllBounded"=>(P>0 [ F naIn=NI ]))) ]:
+Result
+true
