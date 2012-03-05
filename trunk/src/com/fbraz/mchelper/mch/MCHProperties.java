@@ -15,9 +15,7 @@ public class MCHProperties {
 	private String outputFilename;
 	private Boolean directoryMode = Boolean.FALSE;
 	
-	public MCHProperties() {
-		
-	}
+	private MCHProperties() { }
 	
 	public static MCHProperties getInstance() {
 		return instance;
