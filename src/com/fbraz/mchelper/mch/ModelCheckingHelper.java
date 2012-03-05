@@ -10,7 +10,7 @@ public class ModelCheckingHelper {
 	private ParsingMethod parsingMethod;
 	private MCHProperties mchProperties;
 	
-	public ModelCheckingHelper() {
+	private ModelCheckingHelper() {
 		mchProperties = MCHProperties.getInstance(); 
 	}
 	
