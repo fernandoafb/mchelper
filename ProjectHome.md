@@ -1,0 +1,1 @@
+Helper for parsing model checking results and logs, as well as running tests
